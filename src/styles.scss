@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url('./assets/images/background.png');
+}
+
+.mat-mdc-table .mat-mdc-cell {
+  position: relative;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.mat-mdc-table {
+  border-radius: 1em;
+
+  thead {
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+
+    tr {
+      border-top-left-radius: 1em;
+      border-top-right-radius: 1em;
+
+      th {
+
+        &:first-child {
+          border-top-left-radius: 1em;
+        }
+
+        &:last-child {
+          border-top-right-radius: 1em;
+        }
+      }
+    }
+  }
+
+  tbody {
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+
+    tr:last-child {
+      border-bottom-left-radius: 1em;
+      border-bottom-right-radius: 1em;
+
+      td {
+
+        &:first-child {
+          border-bottom-left-radius: 1em;
+        }
+
+        &:last-child {
+          border-bottom-right-radius: 1em;
+        }
+      }
+    }
+  }
+}
+
+.mat-mdc-list-item.mdc-list-item.mdc-list-item--with-three-lines {
+  height: 65px;
+}

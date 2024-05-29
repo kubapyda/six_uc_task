@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Launches</h2>
+<mat-dialog-content>
+  <mat-list>
+    @for (launch of launchesData; track launch) {
+      <mat-list-item>
+        <div matListItemTitle>{{launch.name}}</div>
+        <div matListItemLine>{{launch.date_utc | date}}</div>
+        <app-wikipedia-link [wikipediaUrl]="launch.links.wikipedia"></app-wikipedia-link>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    }
+  </mat-list>
+</mat-dialog-content>

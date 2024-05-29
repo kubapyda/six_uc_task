@@ -1,0 +1,45 @@
+<table mat-table [dataSource]="dataSource.docs" class="mat-elevation-z4 app-table">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="region">
+    <th mat-header-cell *matHeaderCellDef> Region </th>
+    <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="launches">
+    <th mat-header-cell *matHeaderCellDef> Launches </th>
+    <td mat-cell *matCellDef="let element" class="app-table__cell">
+      <span [matTooltip]="element.launches | launches"> {{element.launches | launches }} </span>
+      @if (element.launches.length) {
+        <mat-icon 
+          aria-hidden="false" 
+          aria-label="Read more icon" 
+          fontIcon="read_more"
+          class="app-table__cell--icon"
+          (click)="openLaunchesDialog(element.launches)">
+        </mat-icon>        
+      }
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="wikipedia">
+    <th mat-header-cell *matHeaderCellDef> Wikipedia </th>
+    <td mat-cell *matCellDef="let element"> 
+      <app-wikipedia-link [wikipediaUrl]="element.wikipediaLink" [position]="'left'"></app-wikipedia-link>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [length]="dataSource.totalDocs"
+              [pageSize]="dataSource.limit"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              (page)="handlePageEvent($event)"
+              aria-label="Select page">
+</mat-paginator>

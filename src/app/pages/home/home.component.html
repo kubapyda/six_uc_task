@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <app-filters 
+        (onFilterChanged)="onFilterChanged($event)">
+      </app-filters>
+      <app-table 
+        [dataSource]="dataSource" 
+        [displayedColumns]="displayedColumns"
+        (onPageEvent)="onPageChanged($event)"
+      ></app-table>
+    </div>
+  </div>
+</div>
